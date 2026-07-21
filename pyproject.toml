@@ -1,0 +1,23 @@
+[project]
+name = "nyc-taxi-analytics"
+version = "0.1.0"
+description = "Incremental GCP pipeline and driver analysis for NYC Yellow Taxi data."
+readme = "README.md"
+authors = [
+    { name = "rwurdig", email = "72509000+rwurdig@users.noreply.github.com" },
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "google-cloud-bigquery==3.42.2",
+    "google-cloud-storage==3.13.0",
+]
+
+[project.scripts]
+nyc-taxi = "nyc_taxi.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.11.11,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "nyc_taxi"
