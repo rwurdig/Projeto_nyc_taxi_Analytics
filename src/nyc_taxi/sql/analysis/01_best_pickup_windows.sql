@@ -3,16 +3,16 @@ WITH grouped AS (
     pickup_location_id AS pickup_zone_id,
     day_type,
     pickup_hour,
-    SUM(trip_count) AS trip_count,
-    COUNT(DISTINCT service_date) AS active_days,
-    SUM(engaged_minutes) AS engaged_minutes,
-    SUM(gross_receipts) AS gross_receipts
-  FROM `__PROJECT_ID__.taxi_gold.zone_hour_metrics`
-  WHERE source_month = @source_month
-    AND pickup_location_id NOT IN (264, 265)
+    SUM(metrics.trip_count) AS trip_count,
+    COUNT(DISTINCT metrics.service_date) AS active_days,
+    SUM(metrics.engaged_minutes) AS engaged_minutes,
+    SUM(metrics.gross_receipts) AS gross_receipts
+  FROM `__PROJECT_ID__.taxi_gold.zone_hour_metrics` AS metrics
+  WHERE metrics.source_month = @source_month
+    AND metrics.pickup_location_id NOT IN (264, 265)
   GROUP BY pickup_zone_id, day_type, pickup_hour
-  HAVING SUM(trip_count) >= 200
-    AND COUNT(DISTINCT service_date) >= 5
+  HAVING SUM(metrics.trip_count) >= 200
+    AND COUNT(DISTINCT metrics.service_date) >= 5
 ),
 scored AS (
   SELECT
