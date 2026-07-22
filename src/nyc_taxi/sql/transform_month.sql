@@ -49,7 +49,7 @@ ranked_rows AS (
         dropoff_datetime,
         pickup_location_id,
         dropoff_location_id,
-        trip_distance,
+        CAST(trip_distance AS STRING),
         payment_type,
         fare_amount,
         tip_amount,
