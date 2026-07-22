@@ -1,0 +1,5 @@
+pickup_group,trip_count,average_distance_miles,average_duration_minutes,gross_receipts_per_engaged_hour
+EWR,22,12.63,24.39,288.95
+JFK,150593,15.69,36.38,128.26
+LGA,87027,9.7,25.87,148.79
+non-airport,2685833,2.51,12.95,107.34

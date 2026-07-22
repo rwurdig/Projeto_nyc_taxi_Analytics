@@ -1,0 +1,21 @@
+rank,pickup_zone_id,borough,zone_name,day_type,pickup_hour,trip_count,active_days,gross_receipts_per_engaged_hour
+1,138,Queens,LaGuardia Airport,weekday,1,615,20,196.6
+2,138,Queens,LaGuardia Airport,weekday,0,2781,22,190.53
+3,161,Manhattan,Midtown Center,weekday,5,241,22,187.48
+4,138,Queens,LaGuardia Airport,weekday,23,3985,22,184.41
+5,138,Queens,LaGuardia Airport,weekend,23,1384,9,184.39
+6,138,Queens,LaGuardia Airport,weekend,9,578,9,182.26
+7,138,Queens,LaGuardia Airport,weekday,21,3526,22,180.28
+8,138,Queens,LaGuardia Airport,weekday,22,3529,22,179.94
+9,138,Queens,LaGuardia Airport,weekend,0,346,9,179.59
+10,70,Queens,East Elmhurst,weekday,0,377,22,179.42
+11,138,Queens,LaGuardia Airport,weekend,22,1397,9,178.73
+12,138,Queens,LaGuardia Airport,weekend,8,233,9,178.63
+13,138,Queens,LaGuardia Airport,weekend,21,1557,9,178.24
+14,132,Queens,JFK Airport,weekend,7,1506,9,177.21
+15,138,Queens,LaGuardia Airport,weekday,20,3430,22,177.19
+16,132,Queens,JFK Airport,weekend,8,1189,9,176.38
+17,161,Manhattan,Midtown Center,weekend,7,213,9,176.14
+18,138,Queens,LaGuardia Airport,weekend,10,1029,9,175.53
+19,170,Manhattan,Murray Hill,weekday,5,314,22,175.42
+20,132,Queens,JFK Airport,weekday,3,387,22,174.56

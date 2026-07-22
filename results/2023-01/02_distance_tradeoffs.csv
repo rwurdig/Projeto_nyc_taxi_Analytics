@@ -1,0 +1,5 @@
+distance_band,trip_count,trip_share_pct,average_distance_miles,average_duration_minutes,gross_receipts_per_engaged_hour
+<2 miles,1607062,54.3,1.16,8.34,117.57
+2-5 miles,855337,28.9,2.98,16.69,93.93
+5-10 miles,257685,8.7,7.19,23.84,116.63
+10+ miles,240952,8.1,16.08,38.99,130.67

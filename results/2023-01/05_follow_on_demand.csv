@@ -1,0 +1,21 @@
+rank,dropoff_zone_id,borough,zone_name,destination_trips,next_hour_pickups,pickups_per_dropoff
+1,70,Queens,East Elmhurst,1157,9941,8.592
+2,132,Queens,JFK Airport,27828,150235,5.3987
+3,138,Queens,LaGuardia Airport,30519,86456,2.8329
+4,186,Manhattan,Penn Station/Madison Sq West,65219,106411,1.6316
+5,114,Manhattan,Greenwich Village South,27654,38242,1.3829
+6,43,Manhattan,Central Park,35977,48465,1.3471
+7,249,Manhattan,West Village,48747,65364,1.3409
+8,162,Manhattan,Midtown East,80511,102545,1.2737
+9,100,Manhattan,Garment District,39226,47406,1.2085
+10,79,Manhattan,East Village,62461,75292,1.2054
+11,163,Manhattan,Midtown North,70480,82711,1.1735
+12,90,Manhattan,Flatiron,40399,47246,1.1695
+13,161,Manhattan,Midtown Center,113074,131754,1.1652
+14,234,Manhattan,Union Sq,69319,79017,1.1399
+15,142,Manhattan,Lincoln Square East,85946,97484,1.1342
+16,164,Manhattan,Midtown South,57793,64988,1.1245
+17,237,Manhattan,Upper East Side South,129424,144478,1.1163
+18,230,Manhattan,Times Sq/Theatre District,86795,95765,1.1033
+19,107,Manhattan,Gramercy,60184,66205,1.1
+20,48,Manhattan,Clinton East,74583,80418,1.0782

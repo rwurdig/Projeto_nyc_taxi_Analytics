@@ -1,0 +1,12 @@
+metric,record_count,percent_of_rows
+source_rows,3066766,100.0
+analytics_eligible,2961036,96.552
+flagged_rows,105730,3.448
+pickup_outside_source_month,48,0.002
+invalid_timestamps,1121,0.037
+duration_out_of_range,36274,1.183
+distance_out_of_range,54287,1.77
+non_positive_total,25772,0.84
+missing_zone_match,0,0.0
+excluded_payment_type,51320,1.673
+duplicate,0,0.0
