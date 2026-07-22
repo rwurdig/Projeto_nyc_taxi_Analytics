@@ -171,7 +171,7 @@ class Pipeline:
             ):
                 shutil.copyfileobj(response, output, length=1024 * 1024)
         except urllib.error.HTTPError as exc:
-            if exc.code == 404:
+            if exc.code in (403, 404):
                 raise SourceNotFound(f"source not published: {url}") from exc
             raise
         with path.open("rb") as source:

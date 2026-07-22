@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 import argparse
+import tempfile
 import unittest
+import urllib.error
 from datetime import date
 from importlib import resources
+from pathlib import Path
 from types import SimpleNamespace
 
 from nyc_taxi.months import YearMonth, completed_months, source_url
-from nyc_taxi.pipeline import Pipeline, object_name
+from nyc_taxi.pipeline import Pipeline, SourceNotFound, object_name
 from nyc_taxi.settings import Settings
 
 
@@ -75,12 +78,11 @@ class PipelineTests(unittest.TestCase):
             "yellow/source_month=2023-01/yellow_tripdata_2023-01.parquet",
         )
 
-    def test_successful_month_is_skipped(self) -> None:
+    def test_successful_month_is_skipped_unless_forced(self) -> None:
         pipeline = _RecordingPipeline()
         self.assertEqual(pipeline.load_month(YearMonth(2023, 1)), "SKIPPED")
         self.assertEqual(pipeline.events, ["SKIPPED"])
 
-    def test_force_bypasses_successful_month(self) -> None:
         pipeline = _RecordingPipeline()
         self.assertEqual(
             pipeline.load_month(YearMonth(2023, 1), force=True), "SUCCEEDED"
@@ -89,6 +91,29 @@ class PipelineTests(unittest.TestCase):
             pipeline.events,
             ["RUNNING", "prepare:True", "stage", "transform", "SUCCEEDED"],
         )
+
+    def test_unpublished_source_responses_are_classified(self) -> None:
+        settings = Settings("project", "123", raw_bucket="raw-bucket")
+
+        for status in (403, 404):
+
+            def reject(*args: object, **kwargs: object) -> object:
+                raise urllib.error.HTTPError("url", status, "missing", None, None)
+
+            with (
+                self.subTest(status=status),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                pipeline = Pipeline(
+                    settings,
+                    bigquery_client=object(),
+                    storage_client=object(),
+                    opener=reject,
+                )
+                with self.assertRaisesRegex(SourceNotFound, "not published"):
+                    pipeline._download(
+                        "https://example.invalid/file", Path(directory, "file")
+                    )
 
     def test_staging_rejects_missing_required_columns(self) -> None:
         table = SimpleNamespace(
