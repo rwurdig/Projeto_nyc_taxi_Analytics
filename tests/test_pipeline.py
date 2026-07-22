@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import unittest
 from datetime import date
+from importlib import resources
 from types import SimpleNamespace
 
 from nyc_taxi.months import YearMonth, completed_months, source_url
@@ -109,6 +110,18 @@ class PipelineTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(RuntimeError, "missing required columns"):
             pipeline._stage(YearMonth(2023, 1), "run-id", "gs://raw/source")
+
+    def test_transform_is_month_scoped_and_atomic(self) -> None:
+        sql = (
+            resources.files("nyc_taxi")
+            .joinpath("sql", "transform_month.sql")
+            .read_text(encoding="utf-8")
+        )
+        self.assertIn("BEGIN TRANSACTION", sql)
+        self.assertIn("COMMIT TRANSACTION", sql)
+        self.assertGreaterEqual(sql.count("source_month = @source_month"), 3)
+        self.assertIn("quality_issues", sql)
+        self.assertIn("JSON_VALUE", sql)
 
 
 if __name__ == "__main__":
